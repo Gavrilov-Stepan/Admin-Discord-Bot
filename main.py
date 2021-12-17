@@ -4,14 +4,6 @@ from discord.ext import commands
 bot_Mess = commands.Bot(command_prefix=('+')) #префикс всех команд у бота устанавливается +
 bot_Mess.remove_command('help') #удаление команды help
 
-@bot_Mess.event
-async def on_ready():
-   '''Функция запускается при включении бота.
-   channel - канал сервера, в который отдаются команды'''
-   channel = bot_Mess.get_channel(920228968907554858) #задание того канала, в который будет писать бот при включении
-   await channel.send("Mimist is enabled!") #отправка сообщения о включении бота в вышеуказанный канал
-   await channel.send("To see commands list, write +bot_commands") #отправка сообщения со списком исполняемых ботом команд в вышеуказанный канал
-
 @bot_Mess.command(pass_context = True)
 async def clear(ctx, amount=25):
    '''Функция запускается при отправке участником discord-сервера сообщения +clear amount, где amount - количество сообщений. она служит для очистки последних сообщений количества amoun.
