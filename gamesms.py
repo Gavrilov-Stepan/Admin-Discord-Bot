@@ -4,9 +4,9 @@ from discord.ext import commands
 import random
 import time
 import config
-bot = commands.Bot(command_prefix = '+')
+bot_Mess = commands.Bot(command_prefix = '+')
 
-@bot.command()
+@bot_Mess.command()
 async def guess_game(ctx, type, userch):
     author = ctx.message.author
     try:
@@ -48,17 +48,15 @@ async def guess_game(ctx, type, userch):
         await ctx.send(f'Всего лишь надо было написать {rannum}')
     await author.edit(nick = z)
 
-@bot.command()
+@bot_Mess.command()
 async def rps(ctx):
     author = ctx.message.author
     rps_arr = ['Камень', 'Ножницы', 'Бумага']
     botchoice = random.choice(rps_arr)
-    print(botchoice)
     await ctx.send('Камень? Ножницы? Бумага? Выбирай внимательно.')
-    user_choice = await bot.wait_for('message')
+    user_choice = await bot_Mess.wait_for('message')
     t = user_choice.content
     if t == 'Камень':
-        print(1)
         if botchoice == 'Камень':
             await ctx.send(f'🗿 == 🗿 \n {author.mention} думает аналогичну компьютеру 🧐')
         elif botchoice == 'Ножницы':
@@ -83,7 +81,7 @@ async def rps(ctx):
     else:
         await ctx.send('Ошибка! Введите ваш выбор правильно.')
 
-@bot.command()
+@bot_Mess.command()
 async def rusgame(ctx, opponent: discord.Member):
     author = ctx.message.author
     await ctx.send(f'{author.mention} предлагает сыграть {opponent.mention} в Русскую рулетку 😬🔫')
@@ -94,14 +92,13 @@ async def rusgame(ctx, opponent: discord.Member):
         z = user.author.name + '#' + user.author.discriminator
         return str(z) == str(opponent)
     try:
-        user_choice = await bot.wait_for('message', timeout=5.0, check=check)
+        user_choice = await bot_Mess.wait_for('message', timeout=5.0, check=check)
     except asyncio.TimeoutError:
         await ctx.send(f'{opponent.mention} не захотел испытывать свою жизнь или не успел принять приглашение 💔')
 
     else:
         newnicknames = ['zxcghoul666', 'dead inside', 'thx for SBEU', 'le-le-le me die']
         nick = random.choice(newnicknames)
-        print(nick)
         players = [author, opponent]
         whofirst = random.choice(players)
         whosecond = opponent
@@ -114,7 +111,6 @@ async def rusgame(ctx, opponent: discord.Member):
         baraban = [0] * 6
         baraban[random.randint(0,5)] = 1
         for i in range(len(baraban)):
-            print(int(1/(len(baraban) - i) * 100))
             if i == len(baraban) - 1:
                 await ctx.send(f'{whosecond.mention} завещает все своей собаке и идет на верную смерть')
                 return
@@ -136,5 +132,4 @@ async def rusgame(ctx, opponent: discord.Member):
                     await ctx.send(f'{whosecond.mention} получает СБЭУ👺')
                     await whosecond.edit(nick=nick)
                     return
-bot.run(config.TOKEN)
-
+bot_Mess.run(config.TOKEN)
