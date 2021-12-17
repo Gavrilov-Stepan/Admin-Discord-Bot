@@ -1,7 +1,6 @@
 import discord
 import os
 from discord.ext import commands
-
 bot_Mess = commands.Bot(command_prefix=('+')) #префикс всех команд у бота устанавливается +
 bot_Mess.remove_command('help') #удаление команды help
 
@@ -168,8 +167,3 @@ async def kick(ctx, user: discord.Member):
    await ctx.send(f'{user.mention} was kicked from this server by {ctx.message.author.mention}') #отправляет в канал сообщение, что указанный пользователь был кикнут с сервера отправителем команды
    await user.send(f'You were kicked from server by {ctx.message.author.mention}') #отправляет исключенному пользователю личное сообщение о том, что он был исключен с сервера
    await user.kick() #удаляет указанного участника с сервера
-
-
-
-
-bot_Mess.run(TOKEN) #активация бота по токену
