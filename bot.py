@@ -453,7 +453,8 @@ async def create_role(ctx):   # Вызывает асинхронную функ
             print(str(gg[1]))
             roles.write('\n' + str(gg[1]))  # добавляет их с новой строки в файл
         else:  # выполняется, если файл с запретными словами пустой, что выполняется, если он был либо только что создан, либо очищен при помощи команды +clearBW
-            pass
+            print(str(gg[1]))
+            roles.write(str(gg[1]))
 
         await ctx.message.delete()   # Удаляет ваше сообщение чтобы не захламлять чат.
     except:
@@ -515,7 +516,7 @@ async def remove_role(ctx):
                 await ctx.message.delete()   # Удаляет ваше сообщение чтобы не захламлять чат.
 
 @bot_Mess.command()
-@commands.has_permissions()
+@commands.has_permissions(administrator = True)
 async def mute(ctx, user: discord.Member):
     '''Данной функцией могут воспользоваться только админы ДС сервера.
     Для запуска функции нажно написать в чат ДС сервера "+mute User". Где User - это пользователь которого нужно забанить."
