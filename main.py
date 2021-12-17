@@ -2,8 +2,6 @@ import discord
 import os
 from discord.ext import commands
 
-TOKEN = "OTIwMjM1MzQ3ODYwOTMwNjEy.YbhZ9A.wNQYz7GJg5F-RDM9Nc-RZugoukM" #известный токен бота
-
 bot_Mess = commands.Bot(command_prefix=('+')) #префикс всех команд у бота устанавливается +
 bot_Mess.remove_command('help') #удаление команды help
 
