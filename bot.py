@@ -1,5 +1,9 @@
 import discord
 import os
+import random
+import time
+import asyncio
+from discord.utils import get
 from discord.ext import commands
 bot_Mess = commands.Bot(command_prefix=('+')) #префикс всех команд у бота устанавливается +
 bot_Mess.remove_command('help') #удаление команды help
