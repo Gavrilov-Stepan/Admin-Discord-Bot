@@ -52,7 +52,10 @@ async def bot_commands(ctx):
          '+create_role: creates your personally role\n'+
          '+give_role: gives you one of the created roles list\n'+
          '+remove_role: removes a role on the list\n'+
-         '+mute: mutes a mentioned member') #вывод всего списка команд бота, каждая команда с новой строчки
+         '+mute: mutes a mentioned member\n'+
+         '+rusgame: play a russian game!\n'+
+         '+rps: play rock paper scissors\n'+
+         '+guess_game: play a number guessing game') #вывод всего списка команд бота, каждая команда с новой строчки
 
 @bot_Mess.command(pass_context = True)
 async def addBW(ctx):
