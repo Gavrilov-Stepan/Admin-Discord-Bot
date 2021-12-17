@@ -4,14 +4,6 @@ from discord.ext import commands
 bot_Mess = commands.Bot(command_prefix=('+')) #префикс всех команд у бота устанавливается +
 bot_Mess.remove_command('help') #удаление команды help
 
-@bot_Mess.event
-async def on_ready():
-   '''Функция запускается при включении бота.
-   channel - канал сервера, в который отдаются команды'''
-   channel = bot_Mess.get_channel(920228968907554858) #задание того канала, в который будет писать бот при включении
-   await channel.send("Mimist is enabled!") #отправка сообщения о включении бота в вышеуказанный канал
-   await channel.send("To see commands list, write +bot_commands") #отправка сообщения со списком исполняемых ботом команд в вышеуказанный канал
-
 @bot_Mess.command(pass_context = True)
 async def clear(ctx, amount=25):
    '''Функция запускается при отправке участником discord-сервера сообщения +clear amount, где amount - количество сообщений. она служит для очистки последних сообщений количества amoun.
@@ -53,7 +45,14 @@ async def bot_commands(ctx):
          '+createCh: you can create one or more text channel(s). To do this, write their names after a command\n'+
          '+deleteCh: you can delete one or more text channel(s). To do this, write their names after a command\n'+
          '+clear: you can delete some last messages. To do this, write count after a command. Default value: 25\n'+
-         '+kick: you can kick a user who breaks the rules. To do this, mention him after a command') #вывод всего списка команд бота, каждая команда с новой строчки
+         '+kick: you can kick a user who breaks the rules. To do this, mention him after a command\n'+
+         '+choose: bot helps you to choose on of the written variants\n'+
+         '+roll: returns random number from 1 to 100\n'+
+         '+del_role: deletes a role from the list\n'+
+         '+create_role: creates your personally role\n'+
+         '+give_role: gives you one of the created roles list\n'+
+         '+remove_role: removes a role on the list\n'+
+         '+mute: mutes a mentioned member') #вывод всего списка команд бота, каждая команда с новой строчки
 
 @bot_Mess.command(pass_context = True)
 async def addBW(ctx):
