@@ -111,6 +111,7 @@ async def on_message(message):
    badwords_file - переменная, в которую открывается для чтения файл с запрещенными словами
    badwords - переменная, хранящая запретные слова'''
    if message.author.name != 'Mimist': #проверяет, что имя пользователя, отравившего сообщение - не имя самого бота. сделано, чтобы бот не зациклился
+      #следующая часть кода была частично скопирована со следующей статьи: https://dev.to/mikeywastaken/get-started-with-discord-py-3c51
       if 'https://' in message.content or 'http://' in message.content: #проверяет сообщение на наличие ссылок
          await message.delete() #если в сообщении содержится ссылка, то удаляет ее
          await message.channel.send(f"{message.author.mention} Don't send links!") #отправляет в канал, в котором считал сообщение, требование к пользователю не отправлять ссылки
@@ -142,7 +143,9 @@ async def on_message(message):
                await message.author.send(f"Please stop using bad words!") #отправляет личное сообщение с требованием прекратить использовать запрещенные слова его автору
                return #останавливает функцию
       await bot_Mess.process_commands(message) #останавливает работу всех остальных
+      #здесь заимствование кода прекращается
 
+#следующая часть кода была во многом взята из следующего видео: https://www.youtube.com/watch?v=37kEluk_rls&ab_channel=clvrk
 @bot_Mess.command()
 @commands.has_permissions(administrator = True)
 async def createCh(ctx, *channels):
@@ -162,6 +165,7 @@ async def deleteCh(ctx, *channels: discord.TextChannel):
    for channel in channels: #перебирает все названия удаляемых каналов среди введенных в сообщении
       await channel.delete() #удаляет на сервере канал по заданному названию
       await ctx.send(f'text channel {channel} has been deleted') #отправляет в канал, в который было отправлено сообщение, ответ о том, что канал с указанным названием был удален
+#тут заимствование кода заканчивается
 
 @bot_Mess.command(pass_context = True)
 @commands.has_permissions(administrator = True)
