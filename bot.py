@@ -581,6 +581,10 @@ async def mute(ctx, user: discord.Member):
     await ctx.send(f'yууу {user.mention}, плохой')   # Выводит в чат сообщение о том какой забаненный человеу плохой.
 
 
-if __name__ == '__bot__':
+'''TOKEN = open('token.txt', 'r').read()
+bot_Mess.run(TOKEN)''' # если нужен бот, то раскомментировать
+
+#иначе функционал для тестов
+if __name__ == '__main__':
     TOKEN = open('token.txt', 'r').read()
     bot_Mess.run(TOKEN)
