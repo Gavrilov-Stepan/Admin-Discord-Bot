@@ -2,7 +2,7 @@ import bot
 import pytest
 import unittest.mock
 
-#тест для рандомной функции, иногда работает, иногда нет
+#тест для рандомной функции, иногда работает, иногда нет.
 @pytest.mark.asyncio
 async def testroll():
     ctx = unittest.mock.Mock()
